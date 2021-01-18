@@ -1,23 +1,35 @@
 import logo from './logo.svg';
 import './App.css';
+import Header from './Components/Header'
+import { Container } from  '@material-ui/core';
+
+import Block from './Components/Block';
+import MovieBlock from './Components/MovieBlock';
+
+import { BrowserRouter, Route,Switch } from "react-router-dom";
+import MovieView from './Components/MovieView';
+
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <BrowserRouter>
+        <Switch>
+          <Route path="/movies/:id" component={MovieView}/>
+          <Route path="/">
+            <Header/>
+            <Container>
+              <Block/>
+              <MovieBlock id={27}/>
+              <MovieBlock id={36}/>
+              <MovieBlock id={53}/>
+              <MovieBlock id={37}/>  
+            </Container>
+          </Route>
+        </Switch>
+      </BrowserRouter>
+
     </div>
   );
 }
